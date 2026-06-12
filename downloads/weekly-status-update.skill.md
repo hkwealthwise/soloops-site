@@ -1,4 +1,4 @@
-<!-- Free sample from the SoloOps Kit — https://hkwealthwise.github.io/soloops-site/ · The full kit is 9 skills, $29. This file is yours to use; please don't redistribute the paid kit. -->
+<!-- Free sample from the SoloOps Kit — https://hkwealthwise.github.io/soloops-site/ · The full kit is 10 skills, $29. This file is yours to use; please don't redistribute the paid kit. -->
 
 ---
 name: weekly-status-update
