@@ -5,9 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SoloOps — the AI back office for freelancers</title>
 <meta name="description" content="Nine production-grade AI skills that run your freelance back office: proposals in 10 minutes, airtight scopes, invoices, payment chasing, contract review, and pricing you can defend. Works with Claude & ChatGPT. One full skill free.">
+<link rel="canonical" href="https://hkwealthwise.github.io/soloops-site/">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23faf7f2%22/><text x=%2250%22 y=%2272%22 font-size=%2264%22 text-anchor=%22middle%22 font-family=%22Georgia%22 font-weight=%22bold%22 fill=%22%23b4540a%22>S</text></svg>">
 <meta property="og:title" content="SoloOps — the AI back office for freelancers">
 <meta property="og:description" content="Nine AI skills: proposals in 10 minutes, invoices, payment chasing, pricing math. Read a full skill free before buying. $29.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://hkwealthwise.github.io/soloops-site/">
+<meta property="og:image" content="https://hkwealthwise.github.io/soloops-site/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SoloOps — the AI back office for freelancers">
+<meta name="twitter:description" content="Nine AI skills: proposals in 10 minutes, invoices, payment chasing, pricing math. One full skill free. $29.">
+<meta name="twitter:image" content="https://hkwealthwise.github.io/soloops-site/og-image.png">
 <style>
   :root{
     --paper:#faf7f2; --ink:#1c1917; --muted:#6b6257; --accent:#b4540a;
@@ -67,6 +75,18 @@
   .faq p{padding-top:10px;color:var(--muted);font-size:15.5px;max-width:720px}
   footer{padding:40px 0 60px;color:var(--muted);font-size:14px;text-align:center}
   @media(max-width:600px){section{padding:44px 0}}
+  .term{background:#1c1917;border-radius:12px;margin-top:30px;overflow:hidden;
+        box-shadow:0 8px 30px rgba(28,25,23,.18)}
+  .term-bar{display:flex;gap:6px;align-items:center;padding:10px 14px;
+            background:#292524;color:#a8a29e;font:12px Consolas,Menlo,monospace}
+  .term-bar i{width:10px;height:10px;border-radius:50%;background:#57534e;display:inline-block}
+  .term pre{margin:0;padding:18px 20px;min-height:188px;color:#e7e5e4;
+            font:14px/1.9 Consolas,Menlo,monospace;white-space:pre-wrap}
+  .term .u{color:#fff;font-weight:600}
+  .term .s{color:#e8a33a}
+  .term .g{color:#86efac}
+  .term .cur{display:inline-block;width:8px;background:#e7e5e4;animation:blink 1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
 </style>
 </head>
 <body>
@@ -129,6 +149,13 @@ before you spend a cent.</div>
     <div class="step"><b>2 · Talk normally</b><p>"Write the proposal — here are my notes." The skill interviews you for what's missing. It never invents your rates or dates.</p></div>
     <div class="step"><b>3 · Ship the asset</b><p>Every output passes the skill's own quality gate before you see it. Send it, sign it, or print it to PDF.</p></div>
   </div>
+  <div class="term" aria-hidden="true">
+    <div class="term-bar"><i></i><i></i><i></i>&nbsp; claude code — your back office</div>
+    <pre id="termBody"><span class="cur">&nbsp;</span></pre>
+  </div>
+  <p class="muted" style="margin-top:12px;font-size:14.5px">What activation
+  feels like — no commands to memorize, you just talk. (Same flow by paste
+  in ChatGPT.)</p>
 </section>
 
 <section>
@@ -349,5 +376,33 @@ you until June 26.
 </footer>
 
 </div>
+<script>
+(function(){
+  var body = document.getElementById("termBody");
+  if (!body) return;
+  var LINES = [
+    ["u","you ▸ Sarah accepted Option B — build the scope of work"],
+    ["s","⚙ scope-of-work activated"],
+    ["s","? two things before I write: start date · deposit %"],
+    ["u","you ▸ July 7 · 50% to book"],
+    ["g","✓ SOW drafted — acceptance checks, exclusions, change-order clause"],
+    ["g","✓ quality gate passed · ready to send"]
+  ];
+  var li = 0, ci = 0, out = [];
+  function render(partial){
+    body.innerHTML = out.join("\n") + (partial !== undefined ? "\n" + partial : "") +
+      '<span class="cur">&nbsp;</span>';
+  }
+  function tick(){
+    if (li >= LINES.length){ setTimeout(function(){ li=0; ci=0; out=[]; render(); setTimeout(tick, 400); }, 4200); return; }
+    var cls = LINES[li][0], text = LINES[li][1];
+    ci++;
+    var shown = '<span class="' + cls + '">' + text.slice(0, ci) + '</span>';
+    if (ci >= text.length){ out.push('<span class="' + cls + '">' + text + '</span>'); li++; ci=0; render(); setTimeout(tick, cls === "u" ? 500 : 780); }
+    else { render(shown); setTimeout(tick, 17); }
+  }
+  render(); setTimeout(tick, 800);
+})();
+</script>
 </body>
 </html>
